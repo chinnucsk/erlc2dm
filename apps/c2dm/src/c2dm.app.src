@@ -1,0 +1,16 @@
+{application, c2dm,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  sasl,
+                  crypto,
+                  public_key,
+                  ssl
+                 ]},
+  {mod, { c2dm_app, []}},
+  {env, []}
+ ]}.
