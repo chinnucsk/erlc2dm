@@ -9,7 +9,10 @@
                   sasl,
                   crypto,
                   public_key,
-                  ssl
+                  mochiweb,
+                  webmachine,
+                  ssl,
+                  ibrowse
                  ]},
   {mod, { c2dm_app, []}},
   {env, []}

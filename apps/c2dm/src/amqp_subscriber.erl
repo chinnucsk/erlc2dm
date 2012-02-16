@@ -22,7 +22,16 @@ start_link(App) ->
     end.
 
 start_link(ConnectionParams, Declare, Opts) ->
-    gen_bunny:start_link(?MODULE, ConnectionParams, Declare, Opts).
+    gen_bunny:start_link(?MODULE,
+                              ConnectionParams,
+                              Declare,
+                              Opts).
+
+pause() ->
+    gen_bunny:call(?MODULE, pause).
+
+resume() ->
+    gen_bunny:call(?MODULE, resume).
 
 init([]) ->
     {ok, #state{}}.
@@ -58,7 +67,7 @@ load_config(App) ->
                         durable=true},
             RoutingKey = proplists:get_value(routing_key, Proplist),
             Exchange = #'exchange.declare'{
-                            exchange = proplists:get_value(exchange, Proplist), 
+                            exchange = proplists:get_value(exchange, Proplist),
                             type = <<"topic">>,
                             durable = true},
             Network = #amqp_params_network{
